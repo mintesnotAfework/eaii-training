@@ -1,67 +1,116 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.slide');
-    const totalSlides = slides.length;
-    let currentSlideIndex = 0;
-
-    const navLeft = document.getElementById('nav-left');
-    const navRight = document.getElementById('nav-right');
-
-    // Function to update the slide display
-    function showSlide(index, direction) {
-        if (index < 0 || index >= totalSlides) return;
-
-        // 1. Remove active classes from all slides
-        slides.forEach(slide => {
-            slide.classList.remove('active-slide', 'prev-slide', 'next-slide');
-        });
-
-        // 2. Determine transition class for the old slide (if moving)
-        const oldSlide = slides[currentSlideIndex];
-        if (oldSlide && oldSlide !== slides[index]) {
-            if (direction === 'next') {
-                oldSlide.classList.add('prev-slide');
-            } else if (direction === 'prev') {
-                oldSlide.classList.add('next-slide');
-            }
-        }
-
-        // 3. Set the new slide as active
-        slides[index].classList.add('active-slide');
+// Initial setup
+document.addEventListener('DOMContentLoaded', function() {
+    const slidesContainer = document.getElementById('slidesContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideCounter = document.getElementById('slideCounter');
+    
+    let currentSlide = 0;
+    let totalSlides = document.querySelectorAll('.slide').length;
+    
+    // Update slide counter
+    function updateCounter() {
+        slideCounter.textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
+    }
+    
+    // Update navigation buttons
+    function updateButtons() {
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === totalSlides - 1;
         
-        // 4. Update the current index
-        currentSlideIndex = index;
-
-        // 5. Update arrow visibility
-        navLeft.style.display = currentSlideIndex > 0 ? 'block' : 'none';
-        navRight.style.display = currentSlideIndex < totalSlides - 1 ? 'block' : 'none';
+        // Style adjustments for disabled state
+        if (prevBtn.disabled) {
+            prevBtn.style.opacity = "0.5";
+        } else {
+            prevBtn.style.opacity = "1";
+        }
+        
+        if (nextBtn.disabled) {
+            nextBtn.style.opacity = "0.5";
+        } else {
+            nextBtn.style.opacity = "1";
+        }
     }
-
-    // Navigation handlers
+    
+    // Go to specific slide
+    function goToSlide(slideIndex) {
+        if (slideIndex < 0 || slideIndex >= totalSlides) return;
+        
+        currentSlide = slideIndex;
+        slidesContainer.style.transform = `translateX(-${currentSlide * 100}vw)`;
+        updateCounter();
+        updateButtons();
+    }
+    
+    // Next slide
     function nextSlide() {
-        if (currentSlideIndex < totalSlides - 1) {
-            showSlide(currentSlideIndex + 1, 'next');
+        if (currentSlide < totalSlides - 1) {
+            goToSlide(currentSlide + 1);
         }
     }
-
+    
+    // Previous slide
     function prevSlide() {
-        if (currentSlideIndex > 0) {
-            showSlide(currentSlideIndex - 1, 'prev');
+        if (currentSlide > 0) {
+            goToSlide(currentSlide - 1);
         }
     }
-
-    // Attach click events to arrows
-    navRight.addEventListener('click', nextSlide);
-    navLeft.addEventListener('click', prevSlide);
-
-    // Attach key press events (Right/Left arrow keys)
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') {
+    
+    // Event listeners for buttons
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === 'Right') {
             nextSlide();
-        } else if (e.key === 'ArrowLeft') {
+        } else if (e.key === 'ArrowLeft' || e.key === 'Left') {
             prevSlide();
         }
     });
-
-    // Initialize the presentation on the first slide
-    showSlide(currentSlideIndex, 'initial');
+    
+    // Initialize
+    updateCounter();
+    updateButtons();
+    
+    // Function to add new slide (to be called when you provide content)
+    window.addSlide = function(slideNumber, title, description, contentHTML) {
+        const newSlide = document.createElement('div');
+        newSlide.className = 'slide';
+        newSlide.id = `slide${slideNumber}`;
+        
+        // Create slide header
+        const slideHeader = document.createElement('div');
+        slideHeader.className = 'slide-header';
+        slideHeader.innerHTML = `
+            <img src="https://cdn-icons-png.flaticon.com/512/681/681662.png" alt="EAII Logo" class="company-logo">
+            <div class="company-info">
+                <div class="company-name">EAII</div>
+                <div class="division-name">Cybersecurity Division</div>
+            </div>
+        `;
+        
+        // Create slide content
+        const slideContent = document.createElement('div');
+        slideContent.className = 'slide-content';
+        slideContent.innerHTML = `
+            <h1 class="slide-title">${title}</h1>
+            <p class="slide-description">${description}</p>
+            ${contentHTML}
+        `;
+        
+        // Assemble slide
+        newSlide.appendChild(slideHeader);
+        newSlide.appendChild(slideContent);
+        
+        // Add slide to container
+        slidesContainer.appendChild(newSlide);
+        
+        // Update total slides count and navigation
+        totalSlides = document.querySelectorAll('.slide').length;
+        updateButtons();
+        
+        console.log(`Slide ${slideNumber} added successfully`);
+        return newSlide;
+    };
 });

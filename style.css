@@ -1,175 +1,475 @@
-/* --- Global Variables and Resets --- */
-:root {
-    --eaii-blue: #007bff;      /* Professional Blue */
-    --eaii-orange: #ff7f00;    /* Accent Orange */
-    --eaii-white: #ffffff;
-    --eaii-dark: #343a40;      /* Dark/Text color */
-    --caution-red: #dc3545;    /* Caution/Danger */
-    --good-green: #28a745;     /* Success/Good */
-    --warning-yellow: #ffc107; /* Warning */
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Professional Font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body, html {
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* Important for full-screen single-page control */
-    background-color: var(--eaii-dark);
+body {
+    background-color: #0a192f;
+    color: #333;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
 }
 
-/* --- Presentation Container --- */
-#presentation-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden; /* Hide non-active slides */
+/* Slides container */
+.slides-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    transition: transform 0.5s ease-in-out;
 }
 
-/* --- Slide Base Style --- */
+/* Individual slide */
 .slide {
-    width: 100%;
-    height: 100%;
+    min-width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Header with logo and company name */
+.slide-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 2px solid #e6e6e6;
+    background-color: white;
+    height: 100px;
+    flex-shrink: 0;
     position: absolute;
     top: 0;
     left: 0;
-    background-color: var(--eaii-white);
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    transform: translateX(100%); /* Initial state: off-screen right */
-}
-
-.slide.active-slide {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
+    right: 0;
     z-index: 10;
 }
 
-/* Slide Transition Animation */
-.slide.prev-slide {
-    transform: translateX(-100%); /* When moving back */
-}
-.slide.next-slide {
-    transform: translateX(100%); /* When moving forward */
-}
-
-
-/* --- Header Component --- */
-.slide-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background-color: var(--eaii-dark); /* Dark strip at the top */
-    color: var(--eaii-white);
-    font-size: 1.1rem;
-    font-weight: 600;
-    flex-shrink: 0; /* Prevents header from shrinking */
-    border-bottom: 3px solid var(--eaii-orange);
-}
-
 .company-logo {
-    height: 30px; /* Adjust size as needed */
+    height: 60px;
     width: auto;
-    background-color: var(--eaii-white); /* Example: make sure logo is visible */
-    padding: 2px;
+    margin-right: 20px;
 }
 
-/* --- Slide Content Layout --- */
-.slide-content {
-    flex-grow: 1;
+.company-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 40px;
-    text-align: center;
-    overflow: hidden; /* Keep content within bounds */
 }
 
-/* --- Slide 1 Specific Styling --- */
-.slide-1-content {
-    /* No padding here, as the background needs to be full-size */
-    padding: 0;
-    justify-content: flex-start; /* Title above the background graphic */
-    background-color: var(--eaii-dark);
-}
-
-.slide-title-1 {
-    font-size: 4rem;
+.company-name {
+    font-size: 24px;
     font-weight: 700;
-    color: var(--eaii-orange);
-    margin-top: 10vh; /* Position title near the top */
-    margin-bottom: 5vh;
-    z-index: 20; /* Keep text above the background */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #0056b3;
+    letter-spacing: 1px;
 }
 
-.ai-background-split {
-    position: absolute;
-    top: 50%; /* Position the graphic below the title */
-    left: 0;
-    width: 100%;
-    height: 50%; /* Only cover the bottom half */
+.division-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ff6b35;
+    margin-top: 5px;
+}
+
+/* Slide content area */
+.slide-content {
+    flex: 1;
+    padding: 100px 60px 60px; /* Account for header height */
+    overflow-y: auto;
     display: flex;
-    z-index: 1; /* Below the title */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
 }
 
-.dark-gpt, .good-gpt {
-    width: 50%;
-    height: 100%;
-    /* In a real scenario, you'd use a background image for a GPT-like graphic */
-    background-size: cover;
-    background-position: center;
-    opacity: 0.2; /* Subtle background */
+/* Special styling for slide 1 */
+.slide-1-content {
+    padding-top: 120px;
+    justify-content: center;
 }
 
-.dark-gpt {
-    background-color: #000000; /* Placeholder for 'Dark GPT' background */
-    border-right: 1px solid var(--eaii-orange);
+.slide-title-main {
+    color: #0056b3;
+    font-size: 64px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 800;
+    text-align: center;
 }
 
-.good-gpt {
-    background-color: var(--eaii-blue); /* Placeholder for 'Good GPT' background */
+.slide-subtitle {
+    color: #ff6b35;
+    font-size: 32px;
+    margin-bottom: 50px;
+    font-weight: 600;
 }
 
+.ai-battle-container {
+    display: inline-flex;
+    align-items: center;
+}
 
-/* --- Navigation Arrows --- */
-.nav-arrow {
+.ai-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+
+.ai-icon {
+    font-size: 120px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.ai-icon:hover {
+    transform: scale(1.1);
+}
+
+.good-ai .ai-icon {
+    color: #0056b3;
+}
+
+.dark-ai .ai-icon {
+    color: #d32f2f;
+}
+
+.ai-label {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.good-ai .ai-label {
+    background-color: rgba(0, 86, 179, 0.1);
+    color: #0056b3;
+}
+
+.dark-ai .ai-label {
+    background-color: rgba(211, 47, 47, 0.1);
+    color: #d32f2f;
+}
+
+.ai-description {
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 300px;
+}
+
+.vs-container {
+    margin: 0 40px;
+    position: relative;
+}
+
+.vs-text {
+    font-size: 36px;
+    font-weight: 800;
+    color: #ff6b35;
+    background-color: white;
+    padding: 15px 25px;
+    border-radius: 50%;
+    border: 5px solid #ff6b35;
+    z-index: 2;
+    position: relative;
+}
+
+.battle-line {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    z-index: 100;
-    background: rgba(0, 0, 0, 0.5);
-    color: var(--eaii-white);
-    border: none;
-    padding: 15px 10px;
-    cursor: pointer;
-    font-size: 1.5rem;
-    transition: background 0.3s, opacity 0.3s;
-    outline: none;
-}
-
-.nav-arrow:hover {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-#nav-left {
     left: 0;
-    border-radius: 0 5px 5px 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #0056b3, #ff6b35, #d32f2f);
+    z-index: 1;
 }
 
-#nav-right {
+.era-description {
+    font-size: 24px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-top: 40px;
+    color: #333;
+    text-align: center;
+}
+
+.era-highlight {
+    color: #0056b3;
+    font-weight: 700;
+}
+
+.navigation-hint {
+    position: absolute;
+    bottom: 80px;
+    left: 0;
     right: 0;
-    border-radius: 5px 0 0 5px;
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    padding: 10px;
+}
+
+/* For other slides */
+.slide-title {
+    color: #0056b3;
+    font-size: 36px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #ff6b35;
+}
+
+.slide-description {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Navigation buttons */
+.nav-btn {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 84, 180, 0.8);
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: #0054b4;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.prev-btn {
+    left: 30px;
+}
+
+.next-btn {
+    right: 30px;
+}
+
+.nav-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: translateY(-50%);
+}
+
+/* Slide counter */
+.slide-counter {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 84, 180, 0.9);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    z-index: 100;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Color coding for content */
+.caution {
+    color: #d32f2f;
+    font-weight: 600;
+}
+
+.good {
+    color: #388e3c;
+    font-weight: 600;
+}
+
+.warning {
+    color: #f57c00;
+    font-weight: 600;
+}
+
+/* Content layouts */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.content-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid #0056b3;
+}
+
+.card-title {
+    font-size: 22px;
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+.card-content {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .slide-title-main {
+        font-size: 48px;
+    }
+    
+    .slide-subtitle {
+        font-size: 28px;
+    }
+    
+    .ai-icon {
+        font-size: 90px;
+    }
+    
+    .vs-text {
+        font-size: 28px;
+        padding: 12px 20px;
+    }
+    
+    .era-description {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide-header {
+        padding: 15px;
+        height: 80px;
+    }
+    
+    .company-logo {
+        height: 50px;
+    }
+    
+    .company-name {
+        font-size: 20px;
+    }
+    
+    .division-name {
+        font-size: 16px;
+    }
+    
+    .slide-content {
+        padding: 90px 30px 50px;
+    }
+    
+    .slide-title-main {
+        font-size: 36px;
+    }
+    
+    .slide-subtitle {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+    
+    .ai-battle-container {
+        flex-direction: column; 
+        margin: 30px 0;
+    }
+    
+    .ai-side {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .vs-container {
+        margin: 20px 0;
+    }
+    
+    .vs-text {
+        font-size: 24px;
+        padding: 10px 18px;
+    }
+    
+    .battle-line {
+        width: 5px;
+        height: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(to bottom, #0056b3, #ff6b35, #d32f2f);
+    }
+    
+    .era-description {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    
+    .navigation-hint {
+        bottom: 70px;
+        font-size: 16px;
+    }
+    
+    .nav-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .prev-btn {
+        left: 15px;
+    }
+    
+    .next-btn {
+        right: 15px;
+    }
+}
+
+/* For very tall screens */
+@media (min-height: 1000px) {
+    .slide-title-main {
+        font-size: 72px;
+    }
+    
+    .slide-subtitle {
+        font-size: 36px;
+    }
+    
+    .ai-icon {
+        font-size: 140px;
+    }
+    
+    .era-description {
+        font-size: 28px;
+        max-width: 900px;
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0056b3;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #004494;
 }
