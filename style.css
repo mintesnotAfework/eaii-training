@@ -518,3 +518,34 @@ body {
     margin: 20px 0;
     border-radius: 0 5px 5px 0;
 }
+
+/* Make sure content cards have consistent height */
+.content-grid .content-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* For the two-column layout */
+.two-column-layout {
+    display: flex;
+    gap: 40px;
+    height: 100%;
+    padding: 20px 0;
+}
+
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* For the two-column grid in leadership stats */
+.content-grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
