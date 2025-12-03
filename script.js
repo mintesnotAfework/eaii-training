@@ -590,4 +590,140 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>`
     );
+    addSlide(11, 
+        "Executive LLM Security Guidelines", 
+        "Practical security protocols for C-level leaders using AI tools",
+        `<div style="display: flex; flex-direction: column;">        
+            <div style="margin-top: 20px;">
+                <h3 style="color: #0056b3; font-size: 24px; margin-bottom: 25px; text-align: center;">
+                    <i class="fa-solid fa-list-check" style="margin-right: 10px;"></i>
+                    5 Essential Executive LLM Security Rules
+                </h3>
+                
+                <div style="display: flex; flex-direction: column; gap: 25px; margin-bottom: 30px;">
+                    <!-- Rule 1 -->
+                    <div style="display: flex; align-items: flex-start; background-color: rgba(0, 86, 179, 0.05); padding: 25px; border-radius: 10px; border-left: 5px solid #0056b3;">
+                        <div style="width: 60px; flex-shrink: 0; text-align: center;">
+                            <div style="width: 50px; height: 50px; background-color: #0056b3; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                                <span style="font-weight: bold; color: white; font-size: 24px;">1</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: #0056b3; font-size: 22px; margin-bottom: 10px;">Use Approved Enterprise LLMs Only</h4>
+                            <p style="font-size: 18px; color: #333; line-height: 1.6; margin: 0;">
+                                Never use public/free LLM services (ChatGPT, Bard, etc.) for any work-related tasks. 
+                                Only use company-approved, secured AI platforms with data protection guarantees.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Rule 2 -->
+                    <div style="display: flex; align-items: flex-start; background-color: rgba(255, 107, 53, 0.05); padding: 25px; border-radius: 10px; border-left: 5px solid #ff6b35;">
+                        <div style="width: 60px; flex-shrink: 0; text-align: center;">
+                            <div style="width: 50px; height: 50px; background-color: #ff6b35; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                                <span style="font-weight: bold; color: white; font-size: 24px;">2</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: #ff6b35; font-size: 22px; margin-bottom: 10px;">Data Classification Before Input</h4>
+                            <p style="font-size: 18px; color: #333; line-height: 1.6; margin: 0;">
+                                Never input Confidential or Restricted information. Treat all proprietary data, 
+                                strategic plans, financial projections, and personnel information as off-limits.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Rule 3 -->
+                    <div style="display: flex; align-items: flex-start; background-color: rgba(56, 142, 60, 0.05); padding: 25px; border-radius: 10px; border-left: 5px solid #388e3c;">
+                        <div style="width: 60px; flex-shrink: 0; text-align: center;">
+                            <div style="width: 50px; height: 50px; background-color: #388e3c; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                                <span style="font-weight: bold; color: white; font-size: 24px;">3</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: #388e3c; font-size: 22px; margin-bottom: 10px;">Verification Mandate</h4>
+                            <p style="font-size: 18px; color: #333; line-height: 1.6; margin: 0;">
+                                All AI-generated content must be independently verified before use in decisions, 
+                                communications, or presentations. Never delegate critical thinking to AI.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    );
+    addSlide(12, 
+        "Executive LLM Security Guidelines", 
+        "Practical security protocols for C-level leaders using AI tools",
+        `<div style="display: flex; flex-direction: column;">                    
+            <div style="margin-top: 20px;">
+                <div class="content-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="content-card" style="background-color: rgba(0, 86, 179, 0.05); border-top: 5px solid #0056b3;">
+                        <h4 class="card-title" style="color: #0056b3;">
+                            <i class="fa-solid fa-check-circle" style="margin-right: 10px;"></i>
+                            Approved Executive Uses
+                        </h4>
+                        <ul style="font-size: 17px; color: #333; line-height: 1.6; margin-top: 15px;">
+                            <li><strong>Drafting non-sensitive communications</strong></li>
+                            <li><strong>Market research analysis (public data)</strong></li>
+                            <li><strong>Presentation formatting and structuring</strong></li>
+                            <li><strong>Competitor analysis (public information)</strong></li>
+                            <li><strong>Industry trend summarization</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-card" style="background-color: rgba(211, 47, 47, 0.05); border-top: 5px solid #d32f2f;">
+                        <h4 class="card-title" style="color: #d32f2f;">
+                            <i class="fa-solid fa-ban" style="margin-right: 10px;"></i>
+                            Prohibited Executive Uses
+                        </h4>
+                        <ul style="font-size: 17px; color: #333; line-height: 1.6; margin-top: 15px;">
+                            <li><strong>Financial projections or sensitive data</strong></li>
+                            <li><strong>Legal document analysis or creation</strong></li>
+                            <li><strong>Employee performance evaluations</strong></li>
+                            <li><strong>Merger/acquisition strategy</strong></li>
+                            <li><strong>Board meeting preparations</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    );
+    addSlide(13, 
+        "Thank You", 
+        "EAII Cyber Operation and System Security Division",
+        `<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="background-color: #f0f7ff; padding: 40px; border-radius: 15px; margin-bottom: 40px;">
+                    <h3 style="color: #0056b3; font-size: 32px; margin-bottom: 25px;">Key Takeaways</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; text-align: left;">
+                        <div style="display: flex; align-items: flex-start;">
+                            <i class="fa-solid fa-check" style="color: #388e3c; font-size: 24px; margin-right: 15px; margin-top: 5px;"></i>
+                            <p style="font-size: 18px; color: #333; line-height: 1.6; margin: 0;">
+                                <strong>Human Factor:</strong> Social engineering remains the #1 threat vector
+                            </p>
+                        </div>
+                        <div style="display: flex; align-items: flex-start;">
+                            <i class="fa-solid fa-check" style="color: #388e3c; font-size: 24px; margin-right: 15px; margin-top: 5px;"></i>
+                            <p style="font-size: 18px; color: #333; line-height: 1.6; margin: 0;">
+                                <strong>AI for Leadership:</strong> LLMs can enhance executive productivity if used securely
+                            </p>
+                        </div>
+                        <div style="display: flex; align-items: flex-start;">
+                            <i class="fa-solid fa-check" style="color: #388e3c; font-size: 24px; margin-right: 15px; margin-top: 5px;"></i>
+                            <p style="font-size: 18px; color: #333; line-height: 1.6; margin: 0;">
+                                <strong>Executive Priority:</strong> Specialized security for leadership AI usage
+                            </p>
+                        </div>
+                        <div style="display: flex; align-items: flex-start;">
+                            <i class="fa-solid fa-check" style="color: #388e3c; font-size: 24px; margin-right: 15px; margin-top: 5px;"></i>
+                            <p style="font-size: 18px; color: #333; line-height: 1.6; margin: 0;">
+                                <strong>Continuous Adaptation:</strong> Cybersecurity requires ongoing evolution
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        </div>`
+    );
+
 });
