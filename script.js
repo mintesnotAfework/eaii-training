@@ -1210,8 +1210,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li><strong>Transaction approval delays</strong> - Mandatory cooling-off periods for large transfers</li>
                             <li><strong>Designated verifiers</strong> - Specific staff trained to authenticate executive communications</li>
                             <li><strong>Incident response playbooks</strong> - Clear procedures for suspected deepfake incidents</li>
-                            <li><strong><a href="https://scanner.deepware.ai/">Using deepfake detection tools for video</a></strong> - </li>
-                            <li><strong><a href="https://sightengine.com/detect-deepfakes/">Using deepfake detection tools for pictures</a></strong> - </li>
+                            <li><strong><a style="text-decoration: none;" href="https://scanner.deepware.ai/">Deepfake Detection Tools</a></strong> - Using Deepfake Detection tools for videos </li>
+                            <li><strong><a style="text-decoration: none;" href="https://sightengine.com/detect-deepfakes/">Deepfake Detection Tools</a></strong> - Using Deepfake Detection tools for photos </li>
                         </ul>
                     </div>
                     
